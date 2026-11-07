@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:imf:pricing.prc-001.v1",
+  "title": "Price list to stores",
+  "type": "object",
+  "properties": {
+    "sku": {
+      "type": "string",
+      "minLength": 1
+    },
+    "list_price": {
+      "type": "string",
+      "pattern": "^-?\\d+\\.\\d{2}$",
+      "description": "decimal, carried as a string to keep its precision"
+    },
+    "promo_price": {
+      "type": "string",
+      "pattern": "^-?\\d+\\.\\d{2}$",
+      "description": "decimal, carried as a string to keep its precision"
+    },
+    "valid_from": {
+      "type": "string",
+      "pattern": "^(\\d{2}/\\d{2}/\\d{4})?$"
+    }
+  },
+  "required": [
+    "sku",
+    "list_price",
+    "promo_price",
+    "valid_from"
+  ],
+  "additionalProperties": false
+}

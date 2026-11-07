@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:imf:order.ret-001.v1",
+  "title": "Customer returns to ERP",
+  "type": "object",
+  "properties": {
+    "return_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "order_id": {
+      "type": "string"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "return_id",
+    "order_id",
+    "sku",
+    "quantity",
+    "reason"
+  ],
+  "additionalProperties": false
+}

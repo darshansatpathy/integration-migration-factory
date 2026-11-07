@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:imf:customer.cust-001.v1",
+  "title": "Customer master to CRM",
+  "type": "object",
+  "properties": {
+    "customer_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string",
+      "pattern": "^(\\d{4}-\\d{2}-\\d{2})?$"
+    }
+  },
+  "required": [
+    "customer_id",
+    "name",
+    "email",
+    "country",
+    "created"
+  ],
+  "additionalProperties": false
+}

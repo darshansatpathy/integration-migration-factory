@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:imf:supplier.sup-001.v1",
+  "title": "Supplier master to procurement",
+  "type": "object",
+  "properties": {
+    "supplier_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "payment_terms": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "supplier_id",
+    "name",
+    "country",
+    "payment_terms"
+  ],
+  "additionalProperties": false
+}
