@@ -1,0 +1,722 @@
+<prices>
+  <price>
+    <sku>SKU-00001</sku>
+    <list>35.355</list>
+    <promo>28.28</promo>
+    <from>2025-03-12</from>
+  </price>
+  <price>
+    <sku>SKU-00002</sku>
+    <list>913.540</list>
+    <promo />
+    <from>2026-01-23</from>
+  </price>
+  <price>
+    <sku>SKU-00003</sku>
+    <list>933.290</list>
+    <promo />
+    <from>2025-09-20</from>
+  </price>
+  <price>
+    <sku>SKU-00004</sku>
+    <list>519.020</list>
+    <promo>415.22</promo>
+    <from>2025-02-24</from>
+  </price>
+  <price>
+    <sku>SKU-00005</sku>
+    <list>83.745</list>
+    <promo />
+    <from>2025-12-10</from>
+  </price>
+  <price>
+    <sku>SKU-00006</sku>
+    <list>380.740</list>
+    <promo />
+    <from>2025-07-15</from>
+  </price>
+  <price>
+    <sku>SKU-00007</sku>
+    <list>925.560</list>
+    <promo>740.45</promo>
+    <from>2026-07-16</from>
+  </price>
+  <price>
+    <sku>SKU-00008</sku>
+    <list>622.770</list>
+    <promo />
+    <from>2026-07-28</from>
+  </price>
+  <price>
+    <sku>SKU-00009</sku>
+    <list>69.045</list>
+    <promo />
+    <from>2026-07-14</from>
+  </price>
+  <price>
+    <sku>SKU-00010</sku>
+    <list>321.160</list>
+    <promo>256.93</promo>
+    <from>2025-11-03</from>
+  </price>
+  <price>
+    <sku>SKU-00011</sku>
+    <list>22.830</list>
+    <promo />
+    <from>2025-09-27</from>
+  </price>
+  <price>
+    <sku>SKU-00012</sku>
+    <list>491.830</list>
+    <promo />
+    <from>2025-12-16</from>
+  </price>
+  <price>
+    <sku>SKU-00013</sku>
+    <list>92.975</list>
+    <promo>74.38</promo>
+    <from>2026-07-27</from>
+  </price>
+  <price>
+    <sku>SKU-00014</sku>
+    <list>974.160</list>
+    <promo />
+    <from>2025-12-08</from>
+  </price>
+  <price>
+    <sku>SKU-00015</sku>
+    <list>895.430</list>
+    <promo />
+    <from>2026-08-06</from>
+  </price>
+  <price>
+    <sku>SKU-00016</sku>
+    <list>82.160</list>
+    <promo>65.73</promo>
+    <from>2025-01-25</from>
+  </price>
+  <price>
+    <sku>SKU-00017</sku>
+    <list>77.745</list>
+    <promo />
+    <from>2025-10-06</from>
+  </price>
+  <price>
+    <sku>SKU-00018</sku>
+    <list>455.420</list>
+    <promo />
+    <from>2025-12-19</from>
+  </price>
+  <price>
+    <sku>SKU-00019</sku>
+    <list>954.690</list>
+    <promo>763.75</promo>
+    <from>2025-11-01</from>
+  </price>
+  <price>
+    <sku>SKU-00020</sku>
+    <list>645.500</list>
+    <promo />
+    <from>2025-09-09</from>
+  </price>
+  <price>
+    <sku>SKU-00021</sku>
+    <list>8.055</list>
+    <promo />
+    <from>2025-06-26</from>
+  </price>
+  <price>
+    <sku>SKU-00022</sku>
+    <list>552.840</list>
+    <promo>442.27</promo>
+    <from>2025-02-12</from>
+  </price>
+  <price>
+    <sku>SKU-00023</sku>
+    <list>35.410</list>
+    <promo />
+    <from>2025-04-28</from>
+  </price>
+  <price>
+    <sku>SKU-00024</sku>
+    <list>493.360</list>
+    <promo />
+    <from>2025-05-11</from>
+  </price>
+  <price>
+    <sku>SKU-00025</sku>
+    <list>92.535</list>
+    <promo>74.03</promo>
+    <from>2025-06-28</from>
+  </price>
+  <price>
+    <sku>SKU-00026</sku>
+    <list>976.520</list>
+    <promo />
+    <from>2026-06-02</from>
+  </price>
+  <price>
+    <sku>SKU-00027</sku>
+    <list>526.090</list>
+    <promo />
+    <from>2025-06-04</from>
+  </price>
+  <price>
+    <sku>SKU-00028</sku>
+    <list>515.130</list>
+    <promo>412.10</promo>
+    <from>2026-02-06</from>
+  </price>
+  <price>
+    <sku>SKU-00029</sku>
+    <list>20.505</list>
+    <promo />
+    <from>2026-01-31</from>
+  </price>
+  <price>
+    <sku>SKU-00030</sku>
+    <list>768.370</list>
+    <promo />
+    <from>2026-03-05</from>
+  </price>
+  <price>
+    <sku>SKU-00031</sku>
+    <list>327.620</list>
+    <promo>262.10</promo>
+    <from>2025-07-06</from>
+  </price>
+  <price>
+    <sku>SKU-00032</sku>
+    <list>957.690</list>
+    <promo />
+    <from>2026-07-20</from>
+  </price>
+  <price>
+    <sku>SKU-00033</sku>
+    <list>60.835</list>
+    <promo />
+    <from>2026-03-26</from>
+  </price>
+  <price>
+    <sku>SKU-00034</sku>
+    <list>430.600</list>
+    <promo>344.48</promo>
+    <from>2025-10-06</from>
+  </price>
+  <price>
+    <sku>SKU-00035</sku>
+    <list>590.340</list>
+    <promo />
+    <from>2025-05-25</from>
+  </price>
+  <price>
+    <sku>SKU-00036</sku>
+    <list>237.940</list>
+    <promo />
+    <from>2026-03-19</from>
+  </price>
+  <price>
+    <sku>SKU-00037</sku>
+    <list>9.495</list>
+    <promo>7.60</promo>
+    <from>2026-04-17</from>
+  </price>
+  <price>
+    <sku>SKU-00038</sku>
+    <list>829.870</list>
+    <promo />
+    <from>2025-11-29</from>
+  </price>
+  <price>
+    <sku>SKU-00039</sku>
+    <list>81.540</list>
+    <promo />
+    <from>2026-06-13</from>
+  </price>
+  <price>
+    <sku>SKU-00040</sku>
+    <list>495.710</list>
+    <promo>396.57</promo>
+    <from>2026-02-24</from>
+  </price>
+  <price>
+    <sku>SKU-00041</sku>
+    <list>24.035</list>
+    <promo />
+    <from>2025-01-20</from>
+  </price>
+  <price>
+    <sku>SKU-00042</sku>
+    <list>142.140</list>
+    <promo />
+    <from>2026-01-29</from>
+  </price>
+  <price>
+    <sku>SKU-00043</sku>
+    <list>943.160</list>
+    <promo>754.53</promo>
+    <from>2025-01-26</from>
+  </price>
+  <price>
+    <sku>SKU-00044</sku>
+    <list>621.620</list>
+    <promo />
+    <from>2025-05-16</from>
+  </price>
+  <price>
+    <sku>SKU-00045</sku>
+    <list>65.685</list>
+    <promo />
+    <from>2025-04-14</from>
+  </price>
+  <price>
+    <sku>SKU-00046</sku>
+    <list>446.680</list>
+    <promo>357.34</promo>
+    <from>2025-03-29</from>
+  </price>
+  <price>
+    <sku>SKU-00047</sku>
+    <list>46.240</list>
+    <promo />
+    <from>2025-07-19</from>
+  </price>
+  <price>
+    <sku>SKU-00048</sku>
+    <list>131.020</list>
+    <promo />
+    <from>2026-04-21</from>
+  </price>
+  <price>
+    <sku>SKU-00049</sku>
+    <list>3.455</list>
+    <promo>2.76</promo>
+    <from>2025-02-26</from>
+  </price>
+  <price>
+    <sku>SKU-00050</sku>
+    <list>325.570</list>
+    <promo />
+    <from>2025-12-07</from>
+  </price>
+  <price>
+    <sku>SKU-00051</sku>
+    <list>618.850</list>
+    <promo />
+    <from>2026-05-22</from>
+  </price>
+  <price>
+    <sku>SKU-00052</sku>
+    <list>634.160</list>
+    <promo>507.33</promo>
+    <from>2025-03-08</from>
+  </price>
+  <price>
+    <sku>SKU-00053</sku>
+    <list>95.225</list>
+    <promo />
+    <from>2026-04-06</from>
+  </price>
+  <price>
+    <sku>SKU-00054</sku>
+    <list>942.430</list>
+    <promo />
+    <from>2026-05-27</from>
+  </price>
+  <price>
+    <sku>SKU-00055</sku>
+    <list>742.270</list>
+    <promo>593.82</promo>
+    <from>2026-08-03</from>
+  </price>
+  <price>
+    <sku>SKU-00056</sku>
+    <list>568.880</list>
+    <promo />
+    <from>2026-01-02</from>
+  </price>
+  <price>
+    <sku>SKU-00057</sku>
+    <list>81.335</list>
+    <promo />
+    <from>2025-07-22</from>
+  </price>
+  <price>
+    <sku>SKU-00058</sku>
+    <list>593.200</list>
+    <promo>474.56</promo>
+    <from>2025-01-17</from>
+  </price>
+  <price>
+    <sku>SKU-00059</sku>
+    <list>423.590</list>
+    <promo />
+    <from>2026-01-20</from>
+  </price>
+  <price>
+    <sku>SKU-00060</sku>
+    <list>873.610</list>
+    <promo />
+    <from>2026-06-12</from>
+  </price>
+  <price>
+    <sku>SKU-00061</sku>
+    <list>99.615</list>
+    <promo>79.69</promo>
+    <from>2026-04-29</from>
+  </price>
+  <price>
+    <sku>SKU-00062</sku>
+    <list>60.480</list>
+    <promo />
+    <from>2026-01-31</from>
+  </price>
+  <price>
+    <sku>SKU-00063</sku>
+    <list>410.890</list>
+    <promo />
+    <from>2025-11-18</from>
+  </price>
+  <price>
+    <sku>SKU-00064</sku>
+    <list>269.360</list>
+    <promo>215.49</promo>
+    <from>2025-07-13</from>
+  </price>
+  <price>
+    <sku>SKU-00065</sku>
+    <list>86.055</list>
+    <promo />
+    <from>2026-02-21</from>
+  </price>
+  <price>
+    <sku>SKU-00066</sku>
+    <list>342.720</list>
+    <promo />
+    <from>2025-11-03</from>
+  </price>
+  <price>
+    <sku>SKU-00067</sku>
+    <list>567.800</list>
+    <promo>454.24</promo>
+    <from>2026-02-10</from>
+  </price>
+  <price>
+    <sku>SKU-00068</sku>
+    <list>653.300</list>
+    <promo />
+    <from>2025-12-01</from>
+  </price>
+  <price>
+    <sku>SKU-00069</sku>
+    <list>88.025</list>
+    <promo />
+    <from>2026-01-08</from>
+  </price>
+  <price>
+    <sku>SKU-00070</sku>
+    <list>925.000</list>
+    <promo>740.00</promo>
+    <from>2026-04-09</from>
+  </price>
+  <price>
+    <sku>SKU-00071</sku>
+    <list>605.480</list>
+    <promo />
+    <from>2026-05-22</from>
+  </price>
+  <price>
+    <sku>SKU-00072</sku>
+    <list>873.190</list>
+    <promo />
+    <from>2025-02-13</from>
+  </price>
+  <price>
+    <sku>SKU-00073</sku>
+    <list>91.715</list>
+    <promo>73.37</promo>
+    <from>2025-02-24</from>
+  </price>
+  <price>
+    <sku>SKU-00074</sku>
+    <list>274.090</list>
+    <promo />
+    <from>2026-04-07</from>
+  </price>
+  <price>
+    <sku>SKU-00075</sku>
+    <list>118.520</list>
+    <promo />
+    <from>2025-11-08</from>
+  </price>
+  <price>
+    <sku>SKU-00076</sku>
+    <list>659.970</list>
+    <promo>527.98</promo>
+    <from>2026-08-08</from>
+  </price>
+  <price>
+    <sku>SKU-00077</sku>
+    <list>2.375</list>
+    <promo />
+    <from>2025-12-02</from>
+  </price>
+  <price>
+    <sku>SKU-00078</sku>
+    <list>411.960</list>
+    <promo />
+    <from>2025-04-08</from>
+  </price>
+  <price>
+    <sku>SKU-00079</sku>
+    <list>676.380</list>
+    <promo>541.10</promo>
+    <from>2025-01-12</from>
+  </price>
+  <price>
+    <sku>SKU-00080</sku>
+    <list>912.260</list>
+    <promo />
+    <from>2025-11-19</from>
+  </price>
+  <price>
+    <sku>SKU-00081</sku>
+    <list>48.915</list>
+    <promo />
+    <from>2025-11-28</from>
+  </price>
+  <price>
+    <sku>SKU-00082</sku>
+    <list>297.920</list>
+    <promo>238.34</promo>
+    <from>2025-08-16</from>
+  </price>
+  <price>
+    <sku>SKU-00083</sku>
+    <list>979.450</list>
+    <promo />
+    <from>2026-07-20</from>
+  </price>
+  <price>
+    <sku>SKU-00084</sku>
+    <list>537.480</list>
+    <promo />
+    <from>2026-03-19</from>
+  </price>
+  <price>
+    <sku>SKU-00085</sku>
+    <list>41.315</list>
+    <promo>33.05</promo>
+    <from>2026-04-28</from>
+  </price>
+  <price>
+    <sku>SKU-00086</sku>
+    <list>110.840</list>
+    <promo />
+    <from>2025-03-23</from>
+  </price>
+  <price>
+    <sku>SKU-00087</sku>
+    <list>842.870</list>
+    <promo />
+    <from>2025-12-24</from>
+  </price>
+  <price>
+    <sku>SKU-00088</sku>
+    <list>126.510</list>
+    <promo>101.21</promo>
+    <from>2026-05-22</from>
+  </price>
+  <price>
+    <sku>SKU-00089</sku>
+    <list>82.915</list>
+    <promo />
+    <from>2025-08-11</from>
+  </price>
+  <price>
+    <sku>SKU-00090</sku>
+    <list>297.730</list>
+    <promo />
+    <from>2026-03-03</from>
+  </price>
+  <price>
+    <sku>SKU-00091</sku>
+    <list>171.960</list>
+    <promo>137.57</promo>
+    <from>2026-05-17</from>
+  </price>
+  <price>
+    <sku>SKU-00092</sku>
+    <list>161.090</list>
+    <promo />
+    <from>2025-01-23</from>
+  </price>
+  <price>
+    <sku>SKU-00093</sku>
+    <list>5.155</list>
+    <promo />
+    <from>2025-09-21</from>
+  </price>
+  <price>
+    <sku>SKU-00094</sku>
+    <list>982.650</list>
+    <promo>786.12</promo>
+    <from>2025-11-19</from>
+  </price>
+  <price>
+    <sku>SKU-00095</sku>
+    <list>760.660</list>
+    <promo />
+    <from>2025-06-25</from>
+  </price>
+  <price>
+    <sku>SKU-00096</sku>
+    <list>160.950</list>
+    <promo />
+    <from>2025-12-28</from>
+  </price>
+  <price>
+    <sku>SKU-00097</sku>
+    <list>79.135</list>
+    <promo>63.31</promo>
+    <from>2026-05-30</from>
+  </price>
+  <price>
+    <sku>SKU-00098</sku>
+    <list>794.490</list>
+    <promo />
+    <from>2025-08-16</from>
+  </price>
+  <price>
+    <sku>SKU-00099</sku>
+    <list>775.690</list>
+    <promo />
+    <from>2025-12-12</from>
+  </price>
+  <price>
+    <sku>SKU-00100</sku>
+    <list>588.070</list>
+    <promo>470.46</promo>
+    <from>2025-03-25</from>
+  </price>
+  <price>
+    <sku>SKU-00101</sku>
+    <list>94.075</list>
+    <promo />
+    <from>2025-04-18</from>
+  </price>
+  <price>
+    <sku>SKU-00102</sku>
+    <list>183.230</list>
+    <promo />
+    <from>2025-09-26</from>
+  </price>
+  <price>
+    <sku>SKU-00103</sku>
+    <list>439.850</list>
+    <promo>351.88</promo>
+    <from>2025-12-12</from>
+  </price>
+  <price>
+    <sku>SKU-00104</sku>
+    <list>660.260</list>
+    <promo />
+    <from>2025-09-16</from>
+  </price>
+  <price>
+    <sku>SKU-00105</sku>
+    <list>65.035</list>
+    <promo />
+    <from>2025-06-30</from>
+  </price>
+  <price>
+    <sku>SKU-00106</sku>
+    <list>946.210</list>
+    <promo>756.97</promo>
+    <from>2025-11-28</from>
+  </price>
+  <price>
+    <sku>SKU-00107</sku>
+    <list>583.950</list>
+    <promo />
+    <from>2025-08-10</from>
+  </price>
+  <price>
+    <sku>SKU-00108</sku>
+    <list>528.030</list>
+    <promo />
+    <from>2026-02-08</from>
+  </price>
+  <price>
+    <sku>SKU-00109</sku>
+    <list>76.945</list>
+    <promo>61.56</promo>
+    <from>2025-11-13</from>
+  </price>
+  <price>
+    <sku>SKU-00110</sku>
+    <list>995.560</list>
+    <promo />
+    <from>2025-01-26</from>
+  </price>
+  <price>
+    <sku>SKU-00111</sku>
+    <list>944.480</list>
+    <promo />
+    <from>2026-05-27</from>
+  </price>
+  <price>
+    <sku>SKU-00112</sku>
+    <list>103.700</list>
+    <promo>82.96</promo>
+    <from>2025-02-22</from>
+  </price>
+  <price>
+    <sku>SKU-00113</sku>
+    <list>86.135</list>
+    <promo />
+    <from>2026-03-15</from>
+  </price>
+  <price>
+    <sku>SKU-00114</sku>
+    <list>930.540</list>
+    <promo />
+    <from>2025-08-03</from>
+  </price>
+  <price>
+    <sku>SKU-00115</sku>
+    <list>817.120</list>
+    <promo>653.70</promo>
+    <from>2025-11-02</from>
+  </price>
+  <price>
+    <sku>SKU-00116</sku>
+    <list>118.990</list>
+    <promo />
+    <from>2025-04-14</from>
+  </price>
+  <price>
+    <sku>SKU-00117</sku>
+    <list>1.375</list>
+    <promo />
+    <from>2026-04-30</from>
+  </price>
+  <price>
+    <sku>SKU-00118</sku>
+    <list>314.990</list>
+    <promo>251.99</promo>
+    <from>2025-04-24</from>
+  </price>
+  <price>
+    <sku>SKU-00119</sku>
+    <list>269.160</list>
+    <promo />
+    <from>2025-04-13</from>
+  </price>
+  <price>
+    <sku>SKU-00120</sku>
+    <list>617.300</list>
+    <promo />
+    <from>2025-01-17</from>
+  </price>
+</prices>
