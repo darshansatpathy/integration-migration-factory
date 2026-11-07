@@ -1,0 +1,11 @@
+wave,flow,name,domain,owner,source,target,schedule,classification,transforms,depends_on,score,tier,topic
+1,SUP-001,Supplier master to procurement,supplier,procurement,ERP:csv,SRM:jsonl,0 5 * * 1,internal,6,,5.0,low,supplier.sup-001.v1
+1,INV-001,Inventory snapshot to ERP,inventory,logistics,WMS:csv,ERP:fixed-width,0 23 * * *,internal,5,,5.5,low,inventory.inv-001.v1
+1,PRC-001,Price list to stores,pricing,merchandising,PIM:xml,POS:csv,30 4 * * *,internal,5,,6.0,medium,pricing.prc-001.v1
+1,CUST-001,Customer master to CRM,customer,crm-team,ERP:csv,CRM:csv,0 1 * * *,confidential,8,,6.5,medium,customer.cust-001.v1
+2,INV-002,Stock movements to BI,inventory,analytics,WMS:csv,BI:jsonl,*/15 * * * *,internal,9,INV-001,8.0,medium,inventory.inv-002.v1
+2,ORD-001,Daily orders to warehouse,order,sales-ops,ERP:fixed-width,WMS:csv,0 2 * * *,internal,7,CUST-001,9.0,medium,order.ord-001.v1
+3,ORD-002,Order lines to warehouse,order,sales-ops,ERP:fixed-width,WMS:csv,5 2 * * *,internal,4,ORD-001,7.0,medium,order.ord-002.v1
+3,INVC-001,Invoices to finance,finance,finance-systems,ERP:fixed-width,GL:csv,0 3 * * *,confidential,6,CUST-001;ORD-001,12.5,high,finance.invc-001.v1
+4,PAY-001,Payment confirmations to ERP,finance,treasury,BANK:csv,ERP:csv,*/30 * * * *,confidential,5,INVC-001,6.0,medium,finance.pay-001.v1
+4,RET-001,Customer returns to ERP,order,customer-service,WMS:csv,ERP:csv,0 * * * *,internal,7,ORD-002,6.5,medium,order.ret-001.v1
