@@ -1,0 +1,112 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Lint, types, tests against Kafka 4.3 (Python ${{ matrix.python }})
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12", "3.13"]
+    services:
+      kafka:
+        image: apache/kafka:4.3.2
+        ports: ["9092:9092"]
+        options: >-
+          --health-cmd "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092"
+          --health-interval 5s --health-timeout 10s --health-retries 30
+    env:
+      IMF_BOOTSTRAP: localhost:9092
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: mypy
+      - name: Tests with coverage, including planted regressions and the Kafka path
+        run: pytest --cov --cov-report=term-missing --cov-fail-under=90
+
+  migration-gate:
+    name: Generated artifacts, golden files and the regression on Kafka
+    runs-on: ubuntu-24.04
+    services:
+      kafka:
+        image: apache/kafka:4.3.2
+        ports: ["9092:9092"]
+        options: >-
+          --health-cmd "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092"
+          --health-interval 5s --health-timeout 10s --health-retries 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e .
+      - name: Generated topics, schemas and specs match the estate and templates
+        run: imf generate --check
+      - name: Samples and legacy golden outputs are reproducible
+        run: imf samples --check
+      - name: Inventory is up to date
+        run: |
+          imf inventory --out /tmp/inventory.md --csv /tmp/inventory.csv
+          diff -u docs/inventory.md /tmp/inventory.md
+          diff -u docs/inventory.csv /tmp/inventory.csv
+      - name: Create the generated topics
+        run: imf topics --bootstrap localhost:9092
+      - name: Every flow, legacy against Kafka; unexplained differences fail the build
+        run: |
+          imf regress --bus kafka --bootstrap localhost:9092 --report regression-report.md
+          cat regression-report.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: regression-report
+          path: regression-report.md
+
+  package:
+    name: Wheel builds and installs
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: pip install build && python -m build
+      - run: |
+          python -m venv /tmp/venv
+          /tmp/venv/bin/pip install dist/*.whl
+          cd /tmp && /tmp/venv/bin/imf --version
+          /tmp/venv/bin/python -c "import imf.generate as g, importlib.resources as r; assert r.files('imf').joinpath('templates/ingest.yaml.j2').is_file()"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  audit:
+    name: Dependency audit
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: pip install -e . pip-audit
+      - run: pip-audit --skip-editable
