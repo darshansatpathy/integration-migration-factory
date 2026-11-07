@@ -1,0 +1,9 @@
+# A local broker for the Kafka path. Then: IMF_BOOTSTRAP=localhost:9092
+services:
+  kafka:
+    image: apache/kafka:4.3.2
+    ports: ["9092:9092"]
+    healthcheck:
+      test: ["CMD", "/opt/kafka/bin/kafka-broker-api-versions.sh", "--bootstrap-server", "localhost:9092"]
+      interval: 5s
+      retries: 30
