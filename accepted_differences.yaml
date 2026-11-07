@@ -1,0 +1,67 @@
+# Differences between the legacy platform and the Kafka platform that the flow owners have
+# reviewed and accepted. The regression harness fails on any difference not listed here, and on
+# any rule matched by more records in one flow than its max_records: an accepted difference that
+# suddenly affects many more records is a new problem, not the old one.
+#
+# rules:
+#   rejected       legacy wrote the record; the new platform sent it to the DLQ for one of `reasons`
+#   unicode_case   values equal once non-ASCII letters are case-folded (legacy changed case of a-z only)
+#   tolerance      numeric values within `abs_tolerance`
+#   typed_json     the new value is a JSON number where legacy wrote the same digits as a string
+
+- id: AD-001
+  rule: rejected
+  flows: [CUST-001, ORD-001, INV-002]
+  reasons: [invalid_date]
+  max_records: 10
+  rationale: >-
+    The legacy engine writes a blank date when the source date does not exist (31 February), and
+    the targets load a null. The record is rejected to the DLQ so the owner corrects it at source.
+  approved_by: [crm-team, sales-ops, analytics]
+  ticket: MIG-104
+
+- id: AD-002
+  rule: rejected
+  flows: [ORD-001]
+  reasons: [invalid_decimal]
+  max_records: 5
+  rationale: >-
+    A corrupted amount field is written as 0.00 by the legacy engine, which ships an order with a
+    zero value to the warehouse. It is rejected instead.
+  approved_by: [sales-ops]
+  ticket: MIG-105
+
+- id: AD-003
+  rule: unicode_case
+  flows: [CUST-001, ORD-001]
+  fields: [name, customer_name]
+  max_records: 40
+  rationale: >-
+    Legacy upper-casing leaves non-ASCII letters alone ("FEMI åNGSTRöM"). The new platform
+    upper-cases them correctly; CRM and WMS both store UTF-8 and were tested with the new values.
+  approved_by: [crm-team, sales-ops]
+  ticket: MIG-111
+
+- id: AD-004
+  rule: tolerance
+  flows: [INVC-001]
+  fields: [gross]
+  abs_tolerance: 0.01
+  max_records: 15
+  rationale: >-
+    Legacy computes gross = net x 1.18 in binary floating point, so a result exactly on half a
+    cent can round down. The new platform uses exact decimal arithmetic and rounds half up, as the
+    finance policy requires. Finance confirmed the general ledger tolerates one-cent corrections.
+  approved_by: [finance-systems]
+  ticket: MIG-118
+
+- id: AD-005
+  rule: typed_json
+  flows: [INV-002]
+  fields: [quantity]
+  max_records: 1000
+  rationale: >-
+    The legacy JSON writer emits every value as a string. The BI loader casts quantity to an
+    integer either way; the typed value matches the published schema.
+  approved_by: [analytics]
+  ticket: MIG-120
