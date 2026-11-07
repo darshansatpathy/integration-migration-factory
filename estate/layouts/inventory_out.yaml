@@ -1,0 +1,8 @@
+# What the ERP expects to receive: fixed width.
+name: inventory_out
+format: fixed-width
+fields:
+  - {name: sku,       start: 1,  length: 12, type: string}
+  - {name: location,  start: 13, length: 6,  type: string}
+  - {name: on_hand,   start: 19, length: 8,  type: integer}
+  - {name: description, start: 27, length: 20, type: string}

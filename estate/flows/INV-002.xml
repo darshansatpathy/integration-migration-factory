@@ -1,0 +1,13 @@
+<flow id="INV-002" name="Stock movements to BI" domain="inventory" owner="analytics" schedule="*/15 * * * *" classification="internal">
+  <source system="WMS" protocol="sftp" path="/out/movements_*.csv" format="csv" delimiter="," header="true"/>
+  <target system="BI" protocol="https" path="/ingest/movements" format="jsonl" key="movement_id"/>
+  <map>
+    <field to="movement_id" from="id" transform="trim"/>
+    <field to="sku" from="sku" transform="trim"/>
+    <field to="from_location" from="from_bin" transform="trim|upper|default:RECEIVING"/>
+    <field to="to_location" from="to_bin" transform="trim|upper"/>
+    <field to="quantity" from="qty" transform="int"/>
+    <field to="moved_at" from="ts" transform="date:%Y-%m-%d %H:%M:%S->%Y-%m-%dT%H:%M:%S"/>
+  </map>
+  <depends-on flow="INV-001"/>
+</flow>

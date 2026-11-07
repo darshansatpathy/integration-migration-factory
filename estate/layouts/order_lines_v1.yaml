@@ -1,0 +1,8 @@
+name: order_lines_v1
+format: fixed-width
+fields:
+  - {name: ORD_NO,  start: 1,  length: 10, type: string}
+  - {name: LINE_NO, start: 11, length: 4,  type: integer}
+  - {name: SKU,     start: 15, length: 12, type: string}
+  - {name: QTY,     start: 27, length: 6,  type: integer}
+  - {name: UNIT_PR, start: 33, length: 9,  type: decimal, scale: 3}  # PIC 9(6)V999

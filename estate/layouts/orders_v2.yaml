@@ -1,0 +1,11 @@
+# ERP order header extract, fixed width, one record per line (COBOL copybook ORDHDR-V2).
+name: orders_v2
+format: fixed-width
+fields:
+  - {name: ORD_NO,  start: 1,  length: 10, type: string}
+  - {name: ORD_DT,  start: 11, length: 8,  type: string}
+  - {name: CUST_NO, start: 19, length: 8,  type: string}
+  - {name: CUST_NM, start: 27, length: 30, type: string}
+  - {name: AMT,     start: 57, length: 11, type: decimal, scale: 2}   # PIC 9(9)V99, implied decimal point
+  - {name: CURR,    start: 68, length: 3,  type: string}
+  - {name: STATUS,  start: 71, length: 1,  type: string}

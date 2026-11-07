@@ -1,0 +1,11 @@
+<flow id="INV-001" name="Inventory snapshot to ERP" domain="inventory" owner="logistics" schedule="0 23 * * *" classification="internal">
+  <source system="WMS" protocol="sftp" path="/out/stock_*.csv" format="csv" delimiter="," header="true"/>
+  <target system="ERP" protocol="sftp" path="/in/stock.dat" format="fixed-width" layout="inventory_out" key="sku_location"/>
+  <map>
+    <field to="sku" from="sku" transform="trim"/>
+    <field to="location" from="bin" transform="trim|upper"/>
+    <field to="on_hand" from="qty" transform="int"/>
+    <field to="description" from="desc" transform="trim"/>
+  </map>
+  <key fields="sku,location"/>
+</flow>

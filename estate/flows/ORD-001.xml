@@ -1,0 +1,14 @@
+<flow id="ORD-001" name="Daily orders to warehouse" domain="order" owner="sales-ops" schedule="0 2 * * *" classification="internal">
+  <source system="ERP" protocol="sftp" path="/out/orders_*.dat" format="fixed-width" layout="orders_v2"/>
+  <target system="WMS" protocol="sftp" path="/in/orders.csv" format="csv" delimiter=";" key="order_id"/>
+  <map>
+    <field to="order_id" from="ORD_NO" transform="trim"/>
+    <field to="order_date" from="ORD_DT" transform="date:%Y%m%d->%Y-%m-%d"/>
+    <field to="customer_id" from="CUST_NO" transform="trim"/>
+    <field to="customer_name" from="CUST_NM" transform="trim|upper"/>
+    <field to="amount" from="AMT" transform="decimal:2"/>
+    <field to="currency" from="CURR" transform="trim"/>
+  </map>
+  <filter expr="STATUS != 'X'"/>
+  <depends-on flow="CUST-001"/>
+</flow>

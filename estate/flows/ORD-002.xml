@@ -1,0 +1,13 @@
+<flow id="ORD-002" name="Order lines to warehouse" domain="order" owner="sales-ops" schedule="5 2 * * *" classification="internal">
+  <source system="ERP" protocol="sftp" path="/out/orderlines_*.dat" format="fixed-width" layout="order_lines_v1"/>
+  <target system="WMS" protocol="sftp" path="/in/order_lines.csv" format="csv" delimiter=";" key="line_key"/>
+  <map>
+    <field to="line_key" from="ORD_NO,LINE_NO" transform="join:-"/>
+    <field to="order_id" from="ORD_NO" transform="trim"/>
+    <field to="sku" from="SKU" transform="trim"/>
+    <field to="quantity" from="QTY"/>
+    <field to="unit_price" from="UNIT_PR" transform="decimal:2"/>
+  </map>
+  <filter expr="QTY > 0"/>
+  <depends-on flow="ORD-001"/>
+</flow>

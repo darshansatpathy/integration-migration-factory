@@ -1,0 +1,14 @@
+<flow id="INVC-001" name="Invoices to finance" domain="finance" owner="finance-systems" schedule="0 3 * * *" classification="confidential">
+  <source system="ERP" protocol="sftp" path="/out/invoices_*.dat" format="fixed-width" layout="invoices_v3"/>
+  <target system="GL" protocol="sftp" path="/in/invoices.csv" format="csv" delimiter="," key="invoice_id"/>
+  <map>
+    <field to="invoice_id" from="INV_NO" transform="trim"/>
+    <field to="invoice_date" from="INV_DT" transform="date:%Y%m%d->%Y-%m-%d"/>
+    <field to="customer_id" from="CUST_NO" transform="trim"/>
+    <field to="net" from="NET" transform="decimal:2"/>
+    <field to="gross" from="NET" transform="multiply:1.18|decimal:2"/>
+  </map>
+  <filter expr="TAX_CD in ('S1','S2')"/>
+  <depends-on flow="CUST-001"/>
+  <depends-on flow="ORD-001"/>
+</flow>

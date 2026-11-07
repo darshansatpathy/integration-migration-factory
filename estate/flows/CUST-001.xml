@@ -1,0 +1,11 @@
+<flow id="CUST-001" name="Customer master to CRM" domain="customer" owner="crm-team" schedule="0 1 * * *" classification="confidential">
+  <source system="ERP" protocol="sftp" path="/out/customers_*.csv" format="csv" delimiter=";" header="true"/>
+  <target system="CRM" protocol="sftp" path="/in/customers.csv" format="csv" delimiter="," key="customer_id"/>
+  <map>
+    <field to="customer_id" from="KUNNR" transform="trim"/>
+    <field to="name" from="NAME1" transform="trim|upper"/>
+    <field to="email" from="SMTP_ADDR" transform="trim|lower"/>
+    <field to="country" from="LAND1" transform="trim|upper"/>
+    <field to="created" from="ERDAT" transform="date:%d.%m.%Y->%Y-%m-%d"/>
+  </map>
+</flow>

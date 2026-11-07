@@ -1,0 +1,11 @@
+<flow id="PAY-001" name="Payment confirmations to ERP" domain="finance" owner="treasury" schedule="*/30 * * * *" classification="confidential">
+  <source system="BANK" protocol="sftp" path="/out/payments_*.csv" format="csv" delimiter="," header="true"/>
+  <target system="ERP" protocol="sftp" path="/in/payments.csv" format="csv" delimiter=";" key="payment_ref"/>
+  <map>
+    <field to="payment_ref" from="ref" transform="trim|upper"/>
+    <field to="invoice_id" from="invoice" transform="trim"/>
+    <field to="amount" from="amount" transform="decimal:2"/>
+    <field to="value_date" from="value_date" transform="date:%d/%m/%Y->%Y-%m-%d"/>
+  </map>
+  <depends-on flow="INVC-001"/>
+</flow>

@@ -1,0 +1,8 @@
+name: invoices_v3
+format: fixed-width
+fields:
+  - {name: INV_NO,  start: 1,  length: 12, type: string}
+  - {name: INV_DT,  start: 13, length: 8,  type: string}
+  - {name: CUST_NO, start: 21, length: 8,  type: string}
+  - {name: NET,     start: 29, length: 12, type: decimal, scale: 3}  # PIC 9(9)V999
+  - {name: TAX_CD,  start: 41, length: 2,  type: string}

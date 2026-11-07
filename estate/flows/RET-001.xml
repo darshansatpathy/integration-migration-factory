@@ -1,0 +1,13 @@
+<flow id="RET-001" name="Customer returns to ERP" domain="order" owner="customer-service" schedule="0 * * * *" classification="internal">
+  <source system="WMS" protocol="sftp" path="/out/returns_*.csv" format="csv" delimiter="," header="true"/>
+  <target system="ERP" protocol="sftp" path="/in/returns.csv" format="csv" delimiter=";" key="return_id"/>
+  <map>
+    <field to="return_id" from="rma" transform="trim|upper"/>
+    <field to="order_id" from="order" transform="trim"/>
+    <field to="sku" from="sku" transform="trim"/>
+    <field to="quantity" from="qty" transform="int"/>
+    <field to="reason" from="reason" transform="trim|upper"/>
+  </map>
+  <filter expr="reason in ('damaged','wrong_item')"/>
+  <depends-on flow="ORD-002"/>
+</flow>

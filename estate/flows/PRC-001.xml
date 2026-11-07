@@ -1,0 +1,10 @@
+<flow id="PRC-001" name="Price list to stores" domain="pricing" owner="merchandising" schedule="30 4 * * *" classification="internal">
+  <source system="PIM" protocol="sftp" path="/out/prices_*.xml" format="xml" record="price"/>
+  <target system="POS" protocol="sftp" path="/in/prices.csv" format="csv" delimiter="," key="sku"/>
+  <map>
+    <field to="sku" from="sku" transform="trim"/>
+    <field to="list_price" from="list" transform="decimal:2"/>
+    <field to="promo_price" from="promo" transform="default:0|decimal:2"/>
+    <field to="valid_from" from="from" transform="date:%Y-%m-%d->%d/%m/%Y"/>
+  </map>
+</flow>

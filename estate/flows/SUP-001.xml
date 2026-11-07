@@ -1,0 +1,10 @@
+<flow id="SUP-001" name="Supplier master to procurement" domain="supplier" owner="procurement" schedule="0 5 * * 1" classification="internal">
+  <source system="ERP" protocol="sftp" path="/out/suppliers_*.csv" format="csv" delimiter="|" header="true"/>
+  <target system="SRM" protocol="https" path="/api/suppliers" format="jsonl" key="supplier_id"/>
+  <map>
+    <field to="supplier_id" from="LIFNR" transform="trim"/>
+    <field to="name" from="NAME1" transform="trim"/>
+    <field to="country" from="LAND1" transform="trim|upper"/>
+    <field to="payment_terms" from="ZTERM" transform="trim|default:N30"/>
+  </map>
+</flow>
