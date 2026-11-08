@@ -36,8 +36,31 @@ def test_incomplete_batch_is_not_delivered(estate, generated, tmp_path):
     runtime.ingest(ing, schema, sample_path(estate, estate.flows["PAY-001"]), bus, batch_id="b1")
     bus.topics[ing["topic"]].pop(17)  # a record lost in transit
     with pytest.raises(runtime.IncompleteBatch, match="299 records"):
-        runtime.deliver(dl, bus, tmp_path / "p.csv", "b1")
+        runtime.deliver(dl, bus, tmp_path / "p.csv", "b1", wait_seconds=0)
     assert not (tmp_path / "p.csv").exists()
+
+
+def test_late_records_are_waited_for(estate, generated, tmp_path, monkeypatch):
+    """Records that become visible after the control message are waited for, not reported missing."""
+    ing, dl, schema = _specs(generated, "PAY-001")
+    bus = runtime.MemoryBus()
+    runtime.ingest(ing, schema, sample_path(estate, estate.flows["PAY-001"]), bus, batch_id="b1")
+    late = bus.topics[ing["topic"]][-4:]
+    del bus.topics[ing["topic"]][-4:]
+    reads = {"n": 0}
+    original = bus.read
+
+    def read(topic: str) -> list[runtime.Message]:
+        if topic == ing["topic"]:
+            reads["n"] += 1
+            if reads["n"] == 2:  # the records arrive while deliver is waiting
+                bus.topics[topic].extend(late)
+        return original(topic)
+
+    monkeypatch.setattr(bus, "read", read)
+    monkeypatch.setattr(runtime.time, "sleep", lambda s: None)
+    out = runtime.deliver(dl, bus, tmp_path / "p.csv", "b1", wait_seconds=5)
+    assert out.records == 300 and reads["n"] == 2
 
 
 def test_control_totals_catch_a_changed_record(estate, generated, tmp_path):
@@ -46,7 +69,7 @@ def test_control_totals_catch_a_changed_record(estate, generated, tmp_path):
     runtime.ingest(ing, schema, sample_path(estate, estate.flows["PAY-001"]), bus, batch_id="b1")
     bus.topics[ing["topic"]][3].value["amount"] = "0.01"
     with pytest.raises(runtime.IncompleteBatch, match="control totals"):
-        runtime.deliver(dl, bus, tmp_path / "p.csv", "b1")
+        runtime.deliver(dl, bus, tmp_path / "p.csv", "b1", wait_seconds=0)
 
 
 def test_duplicates_are_dropped_and_order_is_kept(estate, generated, tmp_path):
@@ -68,7 +91,7 @@ def test_batches_are_kept_apart(estate, generated, tmp_path):
         runtime.ingest(ing, schema, sample_path(estate, estate.flows["SUP-001"]), bus, batch_id=b)
     assert runtime.deliver(dl, bus, tmp_path / "s.jsonl", "b2").records == 150
     with pytest.raises(runtime.IncompleteBatch, match="no control message"):
-        runtime.deliver(dl, bus, tmp_path / "s.jsonl", "b3")
+        runtime.deliver(dl, bus, tmp_path / "s.jsonl", "b3", wait_seconds=0)
 
 
 def test_malformed_rows_and_schema_violations_go_to_the_dlq(generated, tmp_path):
@@ -98,3 +121,17 @@ def test_fixed_width_overflow_is_refused():
     layout = [{"name": "n", "start": 1, "length": 3, "type": "integer"}]
     with pytest.raises(formats.Rejected, match="field_overflow"):
         formats.render_fixed({"n": 12345}, layout)
+
+
+def test_a_refused_send_fails_the_flush():
+    """A message the broker refused must surface, not vanish from the batch."""
+
+    class Msg:
+        def topic(self) -> str:
+            return "order.ord-001.v1"
+
+    bus = runtime.KafkaBus("127.0.0.1:1")  # never contacted: the queue is empty
+    bus._on_delivery("Broker: Not enough in-sync replicas", Msg())
+    with pytest.raises(RuntimeError, match="1 messages were not delivered; first: order"):
+        bus.flush()
+    bus.flush()  # the error is reported once
