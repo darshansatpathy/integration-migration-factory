@@ -11,6 +11,9 @@ fast, and the new platform quietly behaves differently from the old one. A date 
 blank becomes an error, a rounding rule changes, an accented name is upper-cased differently, and the
 first anyone hears of it is a reconciliation break in finance.
 
+> Reference implementation built on synthetic or public data. It distils patterns from production
+> work into code you can run and read; it is not a client system.
+
 This repository is the factory approach to that problem, end to end on a representative estate of ten
 flows:
 
